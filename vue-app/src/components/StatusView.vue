@@ -1,12 +1,24 @@
 <template>
-  <div class="bg-secondary vh-100 vw-100">
+  <div>
     <h2 class="pt-5 text-light text-center">Morning status</h2>
     <ul
         class="list-group w-50 mx-auto"
+        v-for="arrive in arrived"
+        :key="arrive.id"
       >
         <li class="list-group-item border border-3-green mt-2">
-          <span class="lead font-weight-bold">Adam</span
+          <span class="lead font-weight-bold">{arrive.name}</span
           ><i class="fas fa-check  ml-2  fa-2x text-success"></i>
+        </li>
+      </ul>
+    <ul
+        class="list-group w-50 mx-auto"
+        v-for="arrive in notarrived"
+        :key="arrive.id"
+      >
+        <li class="list-group-item border border-3-red mt-2">
+          <span class="lead font-weight-bold">{{ arrive.name}}</span
+          ><i class="fas fa-check  ml-2  fa-2x text-danger"></i>
         </li>
       </ul>
 
@@ -14,8 +26,26 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-
+  data () {
+    return {
+      data: []
+    }
+  },
+  mounted () {
+    axios
+      .get('http://localhost:3000/coworkers', { crossdomain: true })
+      .then(response => (this.data = response.data))
+  },
+  computed: {
+    arrived () {
+      return this.data.filter(coworker => coworker.arrived === true)
+    },
+    notarrived () {
+      return this.data.filter(coworker => coworker.arrived === false)
+    }
+  }
 }
 </script>
 
