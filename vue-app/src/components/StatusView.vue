@@ -7,7 +7,7 @@
         :key="arrive.id"
       >
         <li class="list-group-item border border-3-green mt-2">
-          <span class="lead font-weight-bold">{arrive.name}</span
+          <span class="lead font-weight-bold">{{ arrive.name }}</span
           ><i class="fas fa-check  ml-2  fa-2x text-success"></i>
         </li>
       </ul>
@@ -17,7 +17,7 @@
         :key="arrive.id"
       >
         <li class="list-group-item border border-3-red mt-2">
-          <span class="lead font-weight-bold">{{ arrive.name}}</span
+          <span class="lead font-weight-bold">{{ arrive.name }}</span
           ><i class="fas fa-check  ml-2  fa-2x text-danger"></i>
         </li>
       </ul>

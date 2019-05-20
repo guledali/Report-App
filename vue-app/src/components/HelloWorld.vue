@@ -15,6 +15,7 @@
 
 <script>
 import axios from 'axios'
+import Vue from 'vue'
 export default {
   data () {
     return {
@@ -46,22 +47,38 @@ export default {
     },
     matchPassword (password) {
       if (password === this.worker.sha) {
-        this.worker.arrived = !this.worker.arrived
-        //  const workerId = this.workers.find(coworker => coworker.id === this.worker.id)
-        //  this.workers[workerId] = this.worker
-        // console.log(this.workers[workerId])
-        const newWorkers = this.workers.map(coworker => {
+        let data = this.worker.arrived = !this.worker.arrived
+        this.workers.map(coworker => {
+          async function sendData (id) {
+            await axios.put('http://localhost:3000/coworkers/' + id, { arrived: data })
+          }
           if (coworker.id === this.worker.id) {
-            return ({ ...coworker, arrived: !coworker.arrived })
-          } else {
-            return ({ ...coworker })
+            sendData(this.worker.id)
+            Vue.set(coworker, 'arrived', true)
           }
         })
-        this.workers = newWorkers
-
-        // return this.workers.filter(coworker => coworker.id === this.worker.id)
+      } else {
+        alert('Wrong password')
       }
     },
+    // matchPassword (password) {
+    //   if (password === this.worker.sha) {
+    //     this.worker.arrived = !this.worker.arrived
+    //     //  const workerId = this.workers.find(coworker => coworker.id === this.worker.id)
+    //     //  this.workers[workerId] = this.worker
+    //     // console.log(this.workers[workerId])
+    //     const newWorkers = this.workers.map(coworker => {
+    //       if (coworker.id === this.worker.id) {
+    //         return ({ ...coworker, arrived: !coworker.arrived })
+    //       } else {
+    //         return ({ ...coworker })
+    //       }
+    //     })
+    //     this.workers = newWorkers
+
+    //     // return this.workers.filter(coworker => coworker.id === this.worker.id)
+    //   }
+    // },
     handleSubmit () {
       this.password = this.input
       this.matchPassword(this.password)
@@ -70,7 +87,6 @@ export default {
   },
   computed: {
     notarrived () {
-      console.log("notArrived computed now")
       return this.workers.filter(coworker => coworker.arrived === false)
     }
   }
