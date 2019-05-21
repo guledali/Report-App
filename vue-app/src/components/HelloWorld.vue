@@ -3,7 +3,7 @@
     <h1 class="pt-5 text-dark text-left font-weight-bold">Report arrive</h1>
     <div class="mt-5">
   <ul class="list-group list-group-flush w-100" v-for="worker in notarrived" :key="worker.id">
-    <li class="list-group-item lead font-weight-bold" @click="getInfo(worker)"><h5 class="mt-2">{{ worker.name }}</h5><i class="fa-2x text-secondary d-flex justify-content-end fas fa-times"></i></li>
+    <li class="list-group-item lead font-weight-bold" @click="getInfo(worker)"><span class="mt-2 font-name">{{ worker.name }}</span><i class="fa-2x text-secondary d-flex justify-content-end fas fa-times"></i></li>
   </ul>
    <transition name="fade">
   <div class="container-fluid" v-show="showInput">
@@ -122,5 +122,11 @@ export default {
 }
 input[type="password"] {
    font-size:3rem !important;
+}
+
+.font-name {
+  font-size: 2.5rem;
+  color: #000;
+  font-weight: 400;
 }
 </style>
