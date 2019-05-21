@@ -1,5 +1,8 @@
 <template>
   <div>
+    <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+      <router-link to="/" class="text-light nav-link mx-auto display-4 font-weight-bold">Status</router-link>
+    </nav>
     <StatusView />
   </div>
 </template>

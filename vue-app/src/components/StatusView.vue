@@ -1,17 +1,24 @@
 <template>
-  <div>
-    <h2 class="pt-5 text-light text-center">Morning status</h2>
-    <ul
+  <div class="container-fluid pl-0 pr-0">
+    <h1 class="pt-5 text-dark text-left font-weight-bold">Morning status</h1>
+    <div class="mt-4">
+    <ul class="list-group list-group-flush w-100" v-for="worker in data" :key="worker.id">
+        <li class="list-group-item lead font-weight-bold">{{ worker.name }}
+          <i :class="[ worker.arrived ? 'fa-2x text-secondary d-flex justify-content-end fas fa-check' : 'fa-2x text-secondary d-flex justify-content-end fas fa-times' ]"></i>
+        </li>
+    </ul>
+    </div>
+    <!-- <ul
         class="list-group w-50 mx-auto"
-        v-for="arrive in arrived"
+        v-for="arrive in data"
         :key="arrive.id"
       >
         <li class="list-group-item border border-3-green mt-2">
           <span class="lead font-weight-bold">{{ arrive.name }}</span
           ><i class="fas fa-check  ml-2  fa-2x text-success"></i>
         </li>
-      </ul>
-    <ul
+      </ul> -->
+    <!-- <ul
         class="list-group w-50 mx-auto"
         v-for="arrive in notarrived"
         :key="arrive.id"
@@ -20,7 +27,7 @@
           <span class="lead font-weight-bold">{{ arrive.name }}</span
           ><i class="fas fa-check  ml-2  fa-2x text-danger"></i>
         </li>
-      </ul>
+      </ul> -->
 
   </div>
 </template>
@@ -37,16 +44,18 @@ export default {
     axios
       .get('http://localhost:3000/coworkers', { crossdomain: true })
       .then(response => (this.data = response.data))
-  },
-  computed: {
-    arrived () {
-      return this.data.filter(coworker => coworker.arrived === true)
-    },
-    notarrived () {
-      return this.data.filter(coworker => coworker.arrived === false)
-    }
   }
+  // computed: {
+  //   arrived () {
+  //     return this.data.filter(coworker => coworker.arrived === true)
+  //   },
+  //   notarrived () {
+  //     return this.data.filter(coworker => coworker.arrived === false)
+  //   }
+  // }
 }
+// fa-2x text-secondary d-flex justify-content-end
+// fas fa-times fas fa-check
 </script>
 
 <style>

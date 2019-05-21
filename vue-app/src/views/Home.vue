@@ -1,5 +1,8 @@
 <template>
   <div>
+    <nav class="navbar navbar-expand-lg navbar-secondary bg-secondary">
+      <router-link to="/" class="text-body nav-link mx-auto display-4 font-weight-bold">Report</router-link>
+    </nav>
     <HelloWorld />
   </div>
 </template>

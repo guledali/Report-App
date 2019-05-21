@@ -1,15 +1,18 @@
 <template>
 <div>
-  <h2 class="pt-5 text-light text-center pb-3">Reported that you have arrived</h2>
-  <ul class="list-group w-50 mx-auto mt-1" v-for="worker in notarrived" :key="worker.id">
-    <li class="list-group-item d-flex  justify-content-between" @click="getInfo(worker)"><h5 class="mt-2">{{ worker.name }}</h5><button class="btn btn-danger p-0 rounded-pill pl-3 pr-3"><i class="fas fa-times fa-2x"></i></button></li>
+    <h1 class="pt-5 text-dark text-left font-weight-bold">Report arrive</h1>
+    <div class="mt-5">
+  <ul class="list-group list-group-flush w-100" v-for="worker in notarrived" :key="worker.id">
+    <li class="list-group-item lead font-weight-bold" @click="getInfo(worker)"><h5 class="mt-2">{{ worker.name }}</h5><i class="fa-2x text-secondary d-flex justify-content-end fas fa-times"></i></li>
   </ul>
    <transition name="fade">
-  <div class="w-50 mx-auto" v-show="showInput">
-    <input type="password" class="form-control mt-3" placeholder="Password" v-model="input">
-    <button type="button" class="btn btn-primary btn-lg btn-block mt-2"  @click="handleSubmit">Report</button>
+  <div class="container-fluid" v-show="showInput">
+    <input type="password" class="form-control mt-5 p-5 border-0" placeholder="Password" v-model="input">
+    <button type="button" class="btn white btn-lg btn-block mt-5 p-4"  @click="handleSubmit"><span class="display-4 font-weight-normal text-primary">Report</span></button>
   </div>
    </transition>
+
+  </div>
 </div>
 </template>
 
@@ -94,11 +97,30 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
   .fade-enter-active, .fade-leave-active {
     transition: opacity 0.5s;
   }
   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
   }
+  ::placeholder {
+    font-size: 3rem;
+  }
+  .white {
+    background-color: #fff;
+    border-color: #fff;
+  }
+  [placeholder]:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+[placeholder]:focus::-moz-placeholder {
+  opacity: 0;
+}
+[placeholder]:focus::-ms-input-placeholder  {
+  opacity: 0;
+}
+input[type="password"] {
+   font-size:3rem !important;
+}
 </style>
