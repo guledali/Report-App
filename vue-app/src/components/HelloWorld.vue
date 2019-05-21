@@ -1,6 +1,9 @@
 <template>
 <div>
     <h1 class="pt-5 text-dark text-left font-weight-bold">Report arrive</h1>
+    <div v-show="loading">
+      <h1>Loading...</h1>
+    </div>
     <div class="mt-5">
   <ul class="list-group list-group-flush w-100" v-for="worker in notarrived" :key="worker.id">
     <li class="list-group-item lead font-weight-bold" @click="getInfo(worker)"><span class="mt-2 font-name">{{ worker.name }}</span><i class="fa-2x text-secondary d-flex justify-content-end fas fa-times"></i></li>
@@ -22,6 +25,7 @@ import Vue from 'vue'
 export default {
   data () {
     return {
+      loading: true,
       workers: [],
       input: '',
       password: '',
@@ -38,7 +42,10 @@ export default {
   mounted () {
     axios
       .get('http://localhost:3000/coworkers')
-      .then(response => (this.workers = response.data))
+      .then(response => {
+        this.workers = response.data
+        this.loading = false
+      })
   },
   methods: {
     getInfo (e) {

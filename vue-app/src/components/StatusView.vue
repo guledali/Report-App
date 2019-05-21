@@ -1,6 +1,9 @@
 <template>
   <div class="container-fluid pl-0 pr-0">
     <h1 class="pt-5 text-dark text-left font-weight-bold">Morning status</h1>
+    <div v-show="loading">
+      <h1>Loading...</h1>
+    </div>
     <div class="mt-4">
     <ul class="list-group list-group-flush w-100" v-for="worker in data" :key="worker.id">
         <li class="list-group-item lead"><span class="font-name">{{ worker.name }}</span>
@@ -37,13 +40,17 @@ import axios from 'axios'
 export default {
   data () {
     return {
+      loading: true,
       data: []
     }
   },
   mounted () {
     axios
       .get('http://localhost:3000/coworkers', { crossdomain: true })
-      .then(response => (this.data = response.data))
+      .then(response => {
+        this.data = response.data
+        this.loading = false
+      })
   }
   // computed: {
   //   arrived () {
