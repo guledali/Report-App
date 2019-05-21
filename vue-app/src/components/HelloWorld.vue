@@ -10,7 +10,7 @@
   </ul>
    <transition name="fade">
   <div class="container-fluid" v-show="showInput">
-    <input type="password" class="form-control mt-5 p-5 border-0" placeholder="Password" v-model="input">
+    <input type="password" class="form-control mt-5 pl-3 py-5 border-0" placeholder="Password" v-model="input">
     <button type="button" class="btn white btn-lg btn-block mt-5 p-4"  @click="handleSubmit"><span class="display-4 font-weight-normal text-primary">Report</span></button>
   </div>
    </transition>
