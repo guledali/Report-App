@@ -1,12 +1,14 @@
 <template>
 <div>
-    <h1 class="pt-5 text-dark text-left font-weight-bold">Report arrive</h1>
+  <header>
+    <h1 class="pt-5 text-dark text-left font-weight-bold">Report your arrival</h1>
+    </header>
     <div v-show="loading">
       <h1>Loading...</h1>
     </div>
-    <div class="mt-5">
+    <main class="mt-5">
   <ul class="list-group list-group-flush w-100" v-for="worker in notarrived" :key="worker.id">
-    <li class="list-group-item lead font-weight-bold" @click="getInfo(worker)"><span class="mt-2 font-name">{{ worker.name }}</span><i class="fa-2x text-secondary d-flex justify-content-end fas fa-times"></i></li>
+    <li class="list-group-item lead font-weight-bold" @click="getInfo(worker)"><span class="mt-2 font-name">{{ worker.name }}</span><button :aria-label="'Report button for ' + worker.name" class="btn btn-secondary float-right"><i class="fa-2x text-light fas fa-times p-2"></i></button></li>
   </ul>
    <transition name="fade">
   <div class="container-fluid" v-show="showInput">
@@ -15,7 +17,7 @@
   </div>
    </transition>
 
-  </div>
+    </main>
 </div>
 </template>
 
@@ -49,10 +51,11 @@ export default {
   },
   methods: {
     getInfo (e) {
+      this.icon = true
       this.worker.sha = e.sha
       this.worker.id = e.id
       this.worker.name = e.name
-      console.log(e) // Sätt in data
+      //  console.log(e) // Sätt in data
       this.showInput = !this.showInput
     },
     matchPassword (password) {

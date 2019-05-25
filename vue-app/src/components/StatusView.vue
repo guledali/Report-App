@@ -1,16 +1,18 @@
 <template>
   <div class="container-fluid pl-0 pr-0">
+    <header>
     <h1 class="pt-5 text-dark text-left font-weight-bold">Morning status</h1>
+    </header>
     <div v-show="loading">
       <h1>Loading...</h1>
     </div>
-    <div class="mt-4">
+    <main class="mt-4">
     <ul class="list-group list-group-flush w-100" v-for="worker in data" :key="worker.id">
         <li class="list-group-item lead"><span class="font-name">{{ worker.name }}</span>
           <i :class="[ worker.arrived ? 'fa-2x text-secondary d-flex justify-content-end fas fa-check' : 'fa-2x text-secondary d-flex justify-content-end fas fa-times' ]"></i>
         </li>
     </ul>
-    </div>
+    </main>
     <!-- <ul
         class="list-group w-50 mx-auto"
         v-for="arrive in data"
