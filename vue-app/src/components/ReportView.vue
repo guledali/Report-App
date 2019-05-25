@@ -25,6 +25,12 @@
 import axios from 'axios'
 import Vue from 'vue'
 export default {
+  props: {
+    message: {
+      type: String,
+      required: true
+    }
+  },
   data () {
     return {
       loading: true,

@@ -4,7 +4,7 @@
       <router-link to="/status" class="text-secondary nav-link disabled display-4 font-weight-bold d-none d-md-block">Report</router-link>
       <router-link to="/status" class="text-body nav-link display-4 font-weight-bold">Status<i class="fas fa-angle-right ml-3 mt-1"></i></router-link>
     </nav>
-    <report-view></report-view>
+    <report-view :message="message"></report-view>
   </div>
 </template>
 
@@ -16,6 +16,11 @@ export default {
   name: 'report',
   components: {
     ReportView
+  },
+  data () {
+    return {
+      message: 'Morning status'
+    }
   }
 }
 </script>

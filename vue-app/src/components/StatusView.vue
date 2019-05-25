@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid pl-0 pr-0">
     <header>
-    <h1 class="pt-5 text-dark text-left font-weight-bold">Morning status</h1>
+    <h1 class="pt-5 text-dark text-left font-weight-bold">{{ message }}</h1>
     </header>
     <div v-show="loading">
       <h1>Loading...</h1>
@@ -40,6 +40,12 @@
 <script>
 import axios from 'axios'
 export default {
+  props: {
+    message: {
+      type: String,
+      required: true
+    }
+  },
   data () {
     return {
       loading: true,

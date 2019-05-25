@@ -4,7 +4,7 @@
       <router-link to="/" class="text-light nav-link display-4 font-weight-bold"><i class="fas fa-angle-left mr-2"></i>Report</router-link>
       <router-link to="/status" class="text-primary nav-link disabled display-4 font-weight-bold d-none d-md-block">Status</router-link>
     </nav>
-    <status-view></status-view>
+    <status-view :message="message"></status-view>
   </div>
 </template>
 
@@ -16,14 +16,14 @@ export default {
   name: 'status',
   components: {
     StatusView
+  },
+  data () {
+    return {
+      message: 'Morning status'
+    }
   }
 }
 </script>
 
-<style scoped>
-.button {
-  background-color: #007bff;
-  border: 4px solid #f8f9fa; /* Green */
-  border-radius: 12px
-}
+<style>
 </style>
