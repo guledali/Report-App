@@ -67,9 +67,20 @@ export default {
     matchPassword (password) {
       if (password === this.worker.sha) {
         let data = this.worker.arrived = !this.worker.arrived
+        let worker = this.worker
         this.workers.map(coworker => {
           async function sendData (id) {
-            await axios.put('http://localhost:3000/coworkers/' + id, { arrived: data })
+            await axios({
+              method: 'put',
+              url: 'http://localhost:3000/coworkers/' + id,
+              data: {
+                ...worker,
+                arrived: data
+              },
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
           }
           if (coworker.id === this.worker.id) {
             sendData(this.worker.id)
