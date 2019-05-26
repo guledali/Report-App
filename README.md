@@ -8,7 +8,7 @@ This proof-of-concept app is meant for door opening as you sign in with password
 
 ## Installation
 
-Ruby on rails installed on your machine and sqlite
+### Ruby on Rails installed on your machine and sqlite
 
 
 ```
@@ -27,7 +27,7 @@ The last step is to seed some data into database so that frontend can query it
 3. Run rails db:seed
 ```
 
-###If you don't have ruby installed on your machine I prepared a mock node server for you.
+### If you don't have ruby installed on your machine I prepared a mock node server for you.
 
 ```
 1. cd node-server
