@@ -15,3 +15,13 @@ Coworker.create(name: 'Vera', arrived: false, sha: "345DKM")
 Coworker.create(name: 'Ida', arrived: false, sha: "365KMK")
 Coworker.create(name: 'Luna', arrived: false, sha: "257BVE")
 Coworker.create(name: 'Adam', arrived: false, sha: "000FFF")
+
+
+# 9.times do |index|
+#   Coworker.create(
+#     name: Faker::Name.first_name,
+#     arrived: Faker::Boolean.boolean(0),
+#     sha: Faker::Internet.password(6, 6, false),
+#   )
+# end
+
